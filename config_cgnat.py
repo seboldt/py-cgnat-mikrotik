@@ -19,6 +19,6 @@ def firewall_cgnat(cgnat, public_ip):
     # Cria as Regras de Firewall com 1 IP Público para cada /29 de CGNAT
     firewall_output = list()    
     for cgnat_29, addr in zip(cgnat.subnets(new_prefix=29), public_ip):    
-        firewall_output.append(f'ip firewall nat add action=src-nat chain=srcnat out-interfaes=sfp-sfpplus1 src-address={cgnat_29} to-addresses={addr} \n')
+        firewall_output.append(f'ip firewall nat add action=src-nat chain=srcnat out-interface=sfp-sfpplus1 src-address={cgnat_29} to-addresses={addr} \n')
     return firewall_output
 
